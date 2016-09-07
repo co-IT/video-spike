@@ -4,35 +4,32 @@
   intro.on('init', function(event, slick) {
     var video = getVideoFromSlide(slick, 0);
 
-    slick.slickSetOption('autoplaySpeed', video.duration * 1000);
-    slick.slickPlay();
     video.play();
-  });
-
-  intro.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-    var nextVideo = getVideoFromSlide(slick, nextSlide);
-
-    slick.slickSetOption('autoplaySpeed', nextVideo.duration * 1000);
-    slick.slickPause();
+    triggerNextSlideAfterPlaying(slick, video);
   });
 
   intro.on('afterChange', function(event, slick, currentSlide) {
-    var currentVideo = getVideoFromSlide(slick, currentSlide);
+    var video = getVideoFromSlide(slick, currentSlide);
 
-    slick.slickPlay();
-    currentVideo.play();
-
-    var previousVideo = getVideoFromSlide(slick, currentSlide - 1);
-    previousVideo.currentTime = 0;
+    video.play();
+    triggerNextSlideAfterPlaying(slick, video);
   });
 
   function getVideoFromSlide(slick, index) {
-    var slide;
+    return slick.$slides[index].querySelector('video');
+  }
 
-    index >= 0 ? slide = index
-               : slide = slick.$slides.length - 1;
+  function triggerNextSlideAfterPlaying(slick, video) {
+    video.addEventListener('ended', function(event) {
+      event.target.removeEventListener(event.target, arguments.callee);
+      slick.slickNext();
 
-    return slick.$slides[slide].querySelector('video');
+      setTimeout( rewind.bind(this, video), 700);
+    });
+  }
+
+  function rewind(video) {
+    video.currentTime = 0
   }
 
   intro.slick({
