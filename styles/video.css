@@ -4,6 +4,13 @@
   overflow: hidden;
 }
 
+.video {
+  height: 100%;
+  background-image: url(./images/video-fallback.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .video > video {
   display: none;
   position: absolute;
