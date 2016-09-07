@@ -1,29 +1,41 @@
-(function () {
-  var intro= $('.intro');
+(function() {
+  var intro = $('.intro');
 
   intro.on('init', function(event, slick) {
-    // play first video
-   var video = slick.$slides[0].querySelector('video');
+    var video = getVideoFromSlide(slick, 0);
 
-   slick.slickSetOption('autoplaySpeed', video.duration * 1000);
-   slick.slickPlay();
-   video.play();
+    slick.slickSetOption('autoplaySpeed', video.duration * 1000);
+    slick.slickPlay();
+    video.play();
   });
 
   intro.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-   var video = slick.$slides[nextSlide].querySelector('video');
+    var nextVideo = getVideoFromSlide(slick, nextSlide);
 
-   slick.slickSetOption('autoplaySpeed', video.duration * 1000);
-   slick.slickPause();
+    slick.slickSetOption('autoplaySpeed', nextVideo.duration * 1000);
+    slick.slickPause();
   });
 
   intro.on('afterChange', function(event, slick, currentSlide) {
-   var video =  slick.$slides[currentSlide].querySelector('video');
+    var currentVideo = getVideoFromSlide(slick, currentSlide);
 
-   slick.slickPlay();
-   video.play();
+    slick.slickPlay();
+    currentVideo.play();
+
+    var previousVideo = getVideoFromSlide(slick, currentSlide - 1);
+    previousVideo.currentTime = 0;
   });
 
-  intro.slick();
+  function getVideoFromSlide(slick, index) {
+    var slide;
 
+    index >= 0 ? slide = index
+               : slide = slick.$slides.length - 1;
+
+    return slick.$slides[slide].querySelector('video');
+  }
+
+  intro.slick({
+    arrows: false
+  });
 })();
