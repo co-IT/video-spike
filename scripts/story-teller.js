@@ -29,10 +29,11 @@
   }
 
   function rewind(video) {
-    video.currentTime = 0
+    video.currentTime = 0;
   }
 
   intro.slick({
-    arrows: false
+    arrows: false,
+    swipe: false
   });
 })();
