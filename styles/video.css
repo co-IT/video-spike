@@ -1,10 +1,10 @@
-.teaser-video {
+.intro {
   position: relative;
   height: 100%;
   overflow: hidden;
 }
 
-.teaser {
+.video > video {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -20,7 +20,7 @@
   background-repeat: no-repeat;
 }
 
-.vert-center {
+.video-overlay {
   overflow: visible;
   position: absolute;
   width: 100%;
@@ -29,21 +29,21 @@
   transform: translateY(-50%);
 }
 
-.text-wrap {
+.mission-statement {
   margin: 0 auto;
   max-width: 840px;
   padding-top: 2.5%;
 }
 
-.text-wrap * {
+.mission-statement * {
   color: white;
 }
 
-.text-wrap > h1 {
+.mission-statement > h1 {
   font-size: 3.6em;
   margin-bottom: 0.3em;
 }
-.text-wrap > h1::before {
+.mission-statement > h1::before {
   content: "";
   display: block;
   margin: 30px auto;
@@ -53,6 +53,6 @@
   position: relative;
 }
 
-.text-wrap > h3 {
+.mission-statement > h3 {
   font-size: 20px;
 }
