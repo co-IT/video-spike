@@ -1,0 +1,46 @@
+.teaser-video {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.teaser {
+  background-size: cover;
+}
+
+.vert-center {
+  overflow: visible;
+  position: absolute;
+  width: 100%;
+  max-width: none;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.text-wrap {
+  margin: 0 auto;
+  max-width: 840px;
+  padding-top: 2.5%;
+}
+
+.text-wrap * {
+  color: white;
+}
+
+.text-wrap > h1 {
+  font-size: 3.6em;
+  margin-bottom: 0.3em;
+}
+.text-wrap > h1::before {
+  content: "";
+  display: block;
+  margin: 30px auto;
+  width: 225px;
+  height: 5px;
+  background-color: #0dc3ff;
+  position: relative;
+}
+
+.text-wrap > h3 {
+  font-size: 20px;
+}
