@@ -1,0 +1,37 @@
+.scroll-down {
+  margin-top: 60px;
+  position: relative;
+  text-align: center
+}
+
+.scroll-down > a {
+  display: inline-block;
+	margin-top: 60px;
+  color: #333;
+  text-decoration: none;
+}
+.scroll-down > a span {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	box-sizing: border-box;
+	margin-left: -23px;
+	width: 46px;
+	height: 46px;
+	border: 1px solid #333;
+	border-radius: 100%;
+}
+.scroll-down > a span::after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	box-sizing: border-box;
+	margin: -12px 0 0 -8px;
+	width: 16px;
+	height: 16px;
+	border-bottom: 1px solid #333;
+	border-left: 1px solid #333;
+	content: '';
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
