@@ -1,8 +1,8 @@
 .scroll-down {
   position: relative;
   text-align: center;
-	height: 20%;
-	background-color: #F0F0F0;
+	height: 10%;
+	background-color: #CCCCCC;
 }
 
 .scroll-down > a {
